@@ -53,9 +53,6 @@ app.get('/transferencias',async (req,res)=>{
 app.put('/usuario/:id', async(req,res)=>{
     try {
         let query        = 'update "usuarios" set "nombre"= $1,"balance"= $2 where id= $3'
-        let id           = req.params.id
-        let nombre       = req.body.name
-        let balance      = req.body.balance
         let parametros   = [req.body.name,req.body.balance,req.params.id];
         let respuesta    = await pool.query(query,parametros);
         res.json({estatus:'ok'})
